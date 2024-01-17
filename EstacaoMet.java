@@ -1,17 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
-interface Sujeito {
-    void registrarObservador(Observador observador);
-    void removerObservador(Observador observador);
-    void notificarObservadores();
-}
 
-interface Observador {
-    void update(float temperatura, float umidade, float pressao);
-}
-
-public class EstacaoMet implements Sujeito {
+public class EstacaoMet implements Sujeito, Observador {
     private List<Observador> observadores = new ArrayList<>();
     private float temperatura = 0.0f;
     private float umidade = 0.0f;
@@ -39,6 +30,11 @@ public class EstacaoMet implements Sujeito {
         this.umidade = umidade;
         this.pressao = pressao;
         notificarObservadores();
+    }
+
+    @Override
+    public void update(float temperatura, float umidade, float pressao) {
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 }
 
